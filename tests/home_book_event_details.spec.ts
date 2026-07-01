@@ -29,7 +29,7 @@ test.describe('EVENT DETAILS TESTS', () => {
     await expect(eventCards.first()).toContainText('Book Now');
   });
 
-  test.only('View All Events Page', async ({ page }) => {
+  test('View All Events Page', async ({ page }) => {
 
     await page.addInitScript(value => {
       window.localStorage.setItem('eventhub_token', value);
