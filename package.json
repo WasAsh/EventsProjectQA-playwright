@@ -1,0 +1,24 @@
+{
+  "name": "eventhupplaywrightproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:qa": "cross-env TEST_ENV=qa playwright test",
+    "test:staging": "cross-env TEST_ENV=staging playwright test",
+    "test:production": "cross-env TEST_ENV=production playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.0.0",
+    "cross-env": "^10.1.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "dotenv": "^17.4.2"
+  }
+}

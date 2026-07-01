@@ -1,0 +1,106 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e5]:
+    - generic [ref=e7]:
+      - link "EventHub" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img [ref=e10]
+        - generic [ref=e12]: EventHub
+      - generic [ref=e13]:
+        - link "Home" [ref=e14] [cursor=pointer]:
+          - /url: /
+        - link "Events" [ref=e15] [cursor=pointer]:
+          - /url: /events
+        - link "My Bookings" [ref=e16] [cursor=pointer]:
+          - /url: /bookings
+        - link "API Docs" [ref=e17] [cursor=pointer]:
+          - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+        - button "Admin" [ref=e19] [cursor=pointer]:
+          - text: Admin
+          - img [ref=e20]
+        - generic [ref=e22]:
+          - generic "wasee.2132254@gmail.com" [ref=e23]
+          - button "Logout" [ref=e24] [cursor=pointer]
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - heading "Upcoming Events" [level=1] [ref=e28]
+        - paragraph [ref=e29]: Find your next unforgettable experience
+      - generic [ref=e31]:
+        - textbox "Search events, venues…" [ref=e33]
+        - combobox [ref=e35] [cursor=pointer]:
+          - option "All Categories"
+          - option "🎙 Conference"
+          - option "🎵 Concert" [selected]
+          - option "⚽ Sports"
+          - option "🛠 Workshop"
+          - option "🎉 Festival"
+        - combobox [ref=e37] [cursor=pointer]:
+          - option "All Cities"
+          - option "Mumbai" [selected]
+          - option "Bangalore"
+          - option "Delhi"
+          - option "Hyderabad"
+          - option "Chennai"
+          - option "Pune"
+        - button "Clear filters" [ref=e38] [cursor=pointer]
+      - generic [ref=e177]:
+        - img [ref=e179]
+        - heading "No events found" [level=3] [ref=e181]
+        - paragraph [ref=e182]: Try adjusting your filters or search terms to find what you're looking for.
+      - link "Add New Event" [ref=e134] [cursor=pointer]:
+        - /url: /admin/events
+        - button "Add New Event" [ref=e135]:
+          - img [ref=e136]
+          - text: Add New Event
+  - contentinfo [ref=e138]:
+    - generic [ref=e139]:
+      - generic [ref=e140]:
+        - generic [ref=e141]:
+          - heading "Rahul Shetty Academy" [level=3] [ref=e142]
+          - paragraph [ref=e143]: India's leading QA automation training academy — empowering engineers to build real-world testing skills.
+        - generic [ref=e144]:
+          - heading "Popular Courses" [level=3] [ref=e145]
+          - list [ref=e146]:
+            - listitem [ref=e147]:
+              - link "Selenium WebDriver with Java" [ref=e148] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e149]:
+              - link "Playwright with JavaScript" [ref=e150] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e151]:
+              - link "RestAssured API Testing" [ref=e152] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e153]:
+              - link "Cypress End-to-End Testing" [ref=e154] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e155]:
+              - link "Appium Mobile Testing" [ref=e156] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+        - generic [ref=e157]:
+          - heading "QA Job Hiring Platform" [level=3] [ref=e158]
+          - paragraph [ref=e159]: Get hired faster — take skill assessments trusted by top QA employers worldwide.
+          - link "techsmarthire.com →" [ref=e160] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+        - generic [ref=e161]:
+          - heading "EventHub Practice App" [level=3] [ref=e162]
+          - list [ref=e163]:
+            - listitem [ref=e164]:
+              - link "Browse Events" [ref=e165] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e166]:
+              - link "My Bookings" [ref=e167] [cursor=pointer]:
+                - /url: /bookings
+            - listitem [ref=e168]:
+              - link "Manage Events" [ref=e169] [cursor=pointer]:
+                - /url: /admin/events
+            - listitem [ref=e170]:
+              - link "API Documentation" [ref=e171] [cursor=pointer]:
+                - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+      - generic [ref=e172]:
+        - paragraph [ref=e173]: © 2026 Rahul Shetty Academy. All rights reserved.
+        - generic [ref=e174]:
+          - link "rahulshettyacademy.com →" [ref=e175] [cursor=pointer]:
+            - /url: https://rahulshettyacademy.com
+          - link "techsmarthire.com →" [ref=e176] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+  - alert [ref=e4]

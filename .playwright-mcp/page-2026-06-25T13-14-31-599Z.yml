@@ -1,0 +1,189 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e5]:
+    - generic [ref=e7]:
+      - link "EventHub" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img [ref=e10]
+        - generic [ref=e12]: EventHub
+      - generic [ref=e13]:
+        - link "Home" [ref=e14] [cursor=pointer]:
+          - /url: /
+        - link "Events" [ref=e15] [cursor=pointer]:
+          - /url: /events
+        - link "My Bookings" [ref=e16] [cursor=pointer]:
+          - /url: /bookings
+        - link "API Docs" [ref=e17] [cursor=pointer]:
+          - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+        - button "Admin" [ref=e19] [cursor=pointer]:
+          - text: Admin
+          - img [ref=e20]
+        - generic [ref=e22]:
+          - generic "wasee.2132254@gmail.com" [ref=e23]
+          - button "Logout" [ref=e24] [cursor=pointer]
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - heading "Upcoming Events" [level=1] [ref=e28]
+        - paragraph [ref=e29]: Find your next unforgettable experience
+      - generic [ref=e31]:
+        - textbox "Search events, venues…" [ref=e33]
+        - combobox [ref=e35] [cursor=pointer]:
+          - option "All Categories" [selected]
+          - option "🎙 Conference"
+          - option "🎵 Concert"
+          - option "⚽ Sports"
+          - option "🛠 Workshop"
+          - option "🎉 Festival"
+        - combobox [ref=e37] [cursor=pointer]:
+          - option "All Cities" [selected]
+          - option "Mumbai"
+          - option "Bangalore"
+          - option "Delhi"
+          - option "Hyderabad"
+          - option "Chennai"
+          - option "Pune"
+      - generic [ref=e189]:
+        - article [ref=e190]:
+          - generic [ref=e191]:
+            - img "Dilli Diwali Mela" [ref=e192]
+            - generic [ref=e194]: Festival
+            - generic [ref=e195]: Featured
+          - generic [ref=e196]:
+            - link "Dilli Diwali Mela" [ref=e197] [cursor=pointer]:
+              - /url: /events/3
+              - heading "Dilli Diwali Mela" [level=3] [ref=e198]
+            - generic [ref=e199]:
+              - generic [ref=e200]:
+                - img [ref=e201]
+                - generic [ref=e203]: Tue, 20 Oct
+              - generic [ref=e204]:
+                - img [ref=e205]
+                - generic [ref=e207]: Pragati Maidan Exhibition Grounds, Delhi
+            - generic [ref=e208]:
+              - generic [ref=e209]:
+                - paragraph [ref=e210]: $300
+                - generic [ref=e211]: 8 seats left!
+              - link "Book Now" [ref=e212] [cursor=pointer]:
+                - /url: /events/3
+        - article [ref=e213]:
+          - generic [ref=e214]:
+            - img "Hollywood Monsoon Night — Los Angeles" [ref=e215]
+            - generic [ref=e217]: Concert
+            - generic [ref=e218]: Featured
+          - generic [ref=e219]:
+            - link "Hollywood Monsoon Night — Los Angeles" [ref=e220] [cursor=pointer]:
+              - /url: /events/2
+              - heading "Hollywood Monsoon Night — Los Angeles" [level=3] [ref=e221]
+            - generic [ref=e222]:
+              - generic [ref=e223]:
+                - img [ref=e224]
+                - generic [ref=e226]: Sat, 11 Jul
+              - generic [ref=e227]:
+                - img [ref=e228]
+                - generic [ref=e230]: Dome, NSCI SVP Stadium, Worli, Los Angeles
+            - generic [ref=e231]:
+              - generic [ref=e232]:
+                - paragraph [ref=e233]: $2,500
+                - generic [ref=e234]: 479 seats available
+              - link "Book Now" [ref=e235] [cursor=pointer]:
+                - /url: /events/2
+        - article [ref=e236]:
+          - generic [ref=e237]:
+            - img "World Tech Summit" [ref=e238]
+            - generic [ref=e240]: Conference
+            - generic [ref=e241]: Featured
+          - generic [ref=e242]:
+            - link "World Tech Summit" [ref=e243] [cursor=pointer]:
+              - /url: /events/1
+              - heading "World Tech Summit" [level=3] [ref=e244]
+            - generic [ref=e245]:
+              - generic [ref=e246]:
+                - img [ref=e247]
+                - generic [ref=e249]: Sat, 18 Apr
+              - generic [ref=e250]:
+                - img [ref=e251]
+                - generic [ref=e253]: Hyderabad, Hitech city, Hyderabad
+            - generic [ref=e254]:
+              - generic [ref=e255]:
+                - paragraph [ref=e256]: $1,500
+                - generic [ref=e257]: 8 seats left!
+              - link "Book Now" [ref=e258] [cursor=pointer]:
+                - /url: /events/1
+        - article [ref=e259]:
+          - generic [ref=e260]:
+            - img [ref=e262]
+            - generic [ref=e265]: Sports
+          - generic [ref=e266]:
+            - link "WASSSSSSSS" [ref=e267] [cursor=pointer]:
+              - /url: /events/65292
+              - heading "WASSSSSSSS" [level=3] [ref=e268]
+            - generic [ref=e269]:
+              - generic [ref=e270]:
+                - img [ref=e271]
+                - generic [ref=e273]: Thu, 31 Dec
+              - generic [ref=e274]:
+                - img [ref=e275]
+                - generic [ref=e277]: www, gaza
+            - generic [ref=e278]:
+              - generic [ref=e279]:
+                - paragraph [ref=e280]: $50
+                - generic [ref=e281]: 525 seats available
+              - link "Book Now" [ref=e282] [cursor=pointer]:
+                - /url: /events/65292
+      - link "Add New Event" [ref=e134] [cursor=pointer]:
+        - /url: /admin/events
+        - button "Add New Event" [ref=e135]:
+          - img [ref=e136]
+          - text: Add New Event
+  - contentinfo [ref=e138]:
+    - generic [ref=e139]:
+      - generic [ref=e140]:
+        - generic [ref=e141]:
+          - heading "Rahul Shetty Academy" [level=3] [ref=e142]
+          - paragraph [ref=e143]: India's leading QA automation training academy — empowering engineers to build real-world testing skills.
+        - generic [ref=e144]:
+          - heading "Popular Courses" [level=3] [ref=e145]
+          - list [ref=e146]:
+            - listitem [ref=e147]:
+              - link "Selenium WebDriver with Java" [ref=e148] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e149]:
+              - link "Playwright with JavaScript" [ref=e150] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e151]:
+              - link "RestAssured API Testing" [ref=e152] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e153]:
+              - link "Cypress End-to-End Testing" [ref=e154] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e155]:
+              - link "Appium Mobile Testing" [ref=e156] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+        - generic [ref=e157]:
+          - heading "QA Job Hiring Platform" [level=3] [ref=e158]
+          - paragraph [ref=e159]: Get hired faster — take skill assessments trusted by top QA employers worldwide.
+          - link "techsmarthire.com →" [ref=e160] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+        - generic [ref=e161]:
+          - heading "EventHub Practice App" [level=3] [ref=e162]
+          - list [ref=e163]:
+            - listitem [ref=e164]:
+              - link "Browse Events" [ref=e165] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e166]:
+              - link "My Bookings" [ref=e167] [cursor=pointer]:
+                - /url: /bookings
+            - listitem [ref=e168]:
+              - link "Manage Events" [ref=e169] [cursor=pointer]:
+                - /url: /admin/events
+            - listitem [ref=e170]:
+              - link "API Documentation" [ref=e171] [cursor=pointer]:
+                - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+      - generic [ref=e172]:
+        - paragraph [ref=e173]: © 2026 Rahul Shetty Academy. All rights reserved.
+        - generic [ref=e174]:
+          - link "rahulshettyacademy.com →" [ref=e175] [cursor=pointer]:
+            - /url: https://rahulshettyacademy.com
+          - link "techsmarthire.com →" [ref=e176] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+  - alert [ref=e4]

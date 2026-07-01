@@ -1,0 +1,3 @@
+[     895ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) %o @ https://eventhub.rahulshettyacademy.com/register:0
+[     895ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) %o @ https://eventhub.rahulshettyacademy.com/register:0
+[   20904ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://api.eventhub.rahulshettyacademy.com/api/auth/register:0
