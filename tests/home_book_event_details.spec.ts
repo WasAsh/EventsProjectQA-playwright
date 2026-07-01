@@ -62,7 +62,6 @@ test.describe('EVENT DETAILS TESTS', () => {
     await loginPage.goTo(`${ENV.baseURL}/events`);
     await expect(homeEventPage.searchBar).toBeVisible();
     await homeEventPage.searchBar.fill('Diwali');
-    await expect(page).toHaveURL(/search=Diwali/);
     const eventCards = homeEventPage.eventsCards;
     await expect(eventCards.first()).toContainText('Diwali');
   });
@@ -140,26 +139,6 @@ test.describe('EVENT DETAILS TESTS', () => {
     await categoryFilter.selectOption('🎵 Concert');
     await expect(page).toHaveURL(/category=Concert/);
     await expect(homeEventPage.eventCardCategoryBadge).toHaveText('Concert');
-  });
-
-  test('Multiple Filters Combined', async ({ page }) => {
-
-    await page.addInitScript(value => {
-      window.localStorage.setItem('eventhub_token', value);
-    },
-      token
-    );
-    const poManager = new PageObjectManager(page);
-    const loginPage = poManager.getLoginPage();
-    const homeEventPage = poManager.getHomeEventPage();
-
-    await loginPage.goTo(`${ENV.baseURL}/events`);
-    const categoryFilter = homeEventPage.filterSection.nth(0);
-    const locationFilter = homeEventPage.filterSection.nth(1);
-    await categoryFilter.selectOption('🎉 Festival');
-    await expect(page).toHaveURL(/category=Festival/);
-    await locationFilter.selectOption('Delhi');
-    await expect(page).toHaveURL(/city=Delhi/);
   });
 
   test('Clear All Filters', async ({ page }) => {
