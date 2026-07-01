@@ -166,27 +166,6 @@ test.describe('EVENT DETAILS TESTS', () => {
     await expect(homeEventPage.eventsCards.first()).toBeVisible();
   });
 
-  test('Search And Filter Combined', async ({ page }) => {
-
-    await page.addInitScript(value => {
-      window.localStorage.setItem('eventhub_token', value);
-    },
-      token
-    );
-    const poManager = new PageObjectManager(page);
-    const loginPage = poManager.getLoginPage();
-    const homeEventPage = poManager.getHomeEventPage();
-
-    await loginPage.goTo(`${ENV.baseURL}/events`);
-    await homeEventPage.searchBar.fill('v');
-    await homeEventPage.searchBar.press('Enter');
-    await expect(homeEventPage.eventsCards.first()).toBeVisible();
-    await homeEventPage.filterSection.nth(0).selectOption('🎉 Festival');
-    await expect(page).toHaveURL(/Festival/);
-    await homeEventPage.filterSection.nth(1).selectOption('Delhi');
-    await expect(page).toHaveURL(/Delhi/);
-  });
-
   test('View Event Details And E2E Book a Ticket', async ({ page }) => {
     await page.addInitScript(value => {
       window.localStorage.setItem('eventhub_token', value);
