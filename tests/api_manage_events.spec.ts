@@ -45,6 +45,5 @@ test.describe('MANAGE EVENTS TESTS', () => {
         // expect(await eventDetails.hasBookingReference()).toBeTruthy();
         const ref = await eventDetails.getBookingReference();
         console.log(ref);
-
     });
 });

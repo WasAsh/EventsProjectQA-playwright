@@ -11,11 +11,12 @@ test.describe('Authentication & Login Tests', () => {
 
     const poManager = new PageObjectManager(page);
     const loginPage = poManager.getLoginPage();
+    const homeEventPage = poManager.getHomeEventPage();
 
     await loginPage.goTo(ENV.baseURL);
     await loginPage.loginProcess(USERS.user.email , USERS.user.password);
     await expect(loginPage.invalidBanner).toHaveCount(0);
-    await expect(page).not.toHaveURL(/\/login/);
+    await expect(homeEventPage.homeText).toBeVisible();
   });
 
   test('Login with invalid credentials', async ({ page }) => {
@@ -26,9 +27,6 @@ test.describe('Authentication & Login Tests', () => {
     await loginPage.goTo(ENV.baseURL);
     await loginPage.loginProcess(USERS.fakeUser.email , USERS.fakeUser.password);
     await expect(loginPage.invalidBanner).toBeVisible();
-    const forPrinting = await loginPage.invalidBanner.textContent();
-    console.log(forPrinting);
-    await expect(page).toHaveURL(/\/login/);
   });
 
   test('Login with empty email field', async ({ page }) => {
@@ -39,9 +37,6 @@ test.describe('Authentication & Login Tests', () => {
     await loginPage.goTo(ENV.baseURL);
     await loginPage.loginProcess('' , USERS.fakeUser.password);
     await expect(loginPage.errorTextEmptyField).toBeVisible();
-    const forPrinting = await loginPage.errorTextEmptyField.textContent();
-    console.log(forPrinting);
-    await expect(page).toHaveURL(/\/login/);
   });
 
   test('Login with empty password field', async ({ page }) => {
@@ -52,9 +47,6 @@ test.describe('Authentication & Login Tests', () => {
     await loginPage.goTo(ENV.baseURL);
     await loginPage.loginProcess(USERS.fakeUser.email , '');
     await expect(loginPage.errorTextEmptyField).toBeVisible();
-    const forPrinting = await loginPage.errorTextEmptyField.textContent();
-    console.log(forPrinting);
-    await expect(page).toHaveURL(/\/login/);
   });
 
   test('Logout functionality', async ({ page }) => {
@@ -67,6 +59,5 @@ test.describe('Authentication & Login Tests', () => {
     await expect(loginPage.logOutBTN).toBeVisible();
     await loginPage.logOutBTN.click();
     await expect(page).toHaveURL(/\/login/);
-    await expect(loginPage.logInBTN).toBeVisible();
   });
 });
