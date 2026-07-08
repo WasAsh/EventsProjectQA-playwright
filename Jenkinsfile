@@ -70,6 +70,26 @@ pipeline {
                 reportName: 'Playwright HTML Report',
                 reportTitles: 'Playwright Test Results'
             ])
+            archiveArtifacts(
+                artifacts: 'test-results/**/*',
+                allowEmptyArchive: true
+          )
         }
     }
+
+    post {
+        always {
+            echo 'Publishing Allure Report...'
+            allure([
+                results:[
+                    [path:'allure-results']
+                ]
+            ])
+        }
+    }
+}
+
+}
+
+}
 }

@@ -7,13 +7,19 @@ export default defineConfig({
   fullyParallel: true,
   retries: 1,
   workers: 5,
-  reporter: 'html',
+  reporter: [
+    ['html', {
+      outputFolder: 'playwright-report',
+      open: 'never',
+    }],
+    ['allure-playwright']
+  ],
   timeout: 30000,
   expect: {
-    timeout: 30000 ,
+    timeout: 30000,
   },
   use: {
-    trace: 'on',
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     headless: true,
