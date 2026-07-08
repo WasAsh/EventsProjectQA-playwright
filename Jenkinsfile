@@ -23,14 +23,7 @@ pipeline {
             choices: ['all','smoke', 'regression', 'sanity'],
             description: 'Select test suite'
         )
-    }
-
-    steps {
-        echo "Environment: ${params.ENV}"
-        echo "Browser: ${params.BROWSER}"
-        echo "Suite: ${params.SUITE}"
-    }
-    
+    }    
     stages {
         stage('Install Dependencies') {
             steps {
