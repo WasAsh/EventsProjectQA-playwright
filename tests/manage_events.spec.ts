@@ -1,8 +1,6 @@
 import { test, expect, request } from '@playwright/test';
 import { PageObjectManager } from '../page-objects/page_object_manager';
 import { ENV } from "../configs/env";
-import { USERS } from '../configs/users';
-import { EVENTS } from '../configs/event';
 import { ApiUtils } from '../utils/api_utils'
 const dataSet = JSON.parse(JSON.stringify(require('../utils/test_data.json')));
 
@@ -12,7 +10,7 @@ const title = `Test Event ${Date.now()}`;
 test.beforeAll(async () => {
   const apiContext = await request.newContext();
   const apiUtils = new ApiUtils(apiContext);
-  token = await apiUtils.loginProcess(USERS.user.email, USERS.user.password);
+  token = await apiUtils.loginProcess(ENV.user.email, ENV.user.password);
 })
 
 test.describe('MANAGE EVENTS TESTS', () => {

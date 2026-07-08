@@ -1,8 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {PageObjectManager} from '../page-objects/page_object_manager';
 import {ENV} from '../configs/env';
-import { USERS } from '../configs/users';
-
 
 
 test.describe('User Regesteration Tests', () => {
@@ -12,7 +10,7 @@ test.describe('User Regesteration Tests', () => {
         const registerUserPage = poManager.getRegisterUserPage();
         await page.goto(`${ENV.baseURL}/register`);
         await expect(registerUserPage.textLabel).toBeVisible();
-        await registerUserPage.addNewUser(USERS.user.email , USERS.user.password);
+        await registerUserPage.addNewUser(ENV.user.email , ENV.user.password);
         await page.goto(ENV.baseURL);
         await expect(page).toHaveURL(ENV.baseURL);
 
@@ -23,7 +21,7 @@ test.describe('User Regesteration Tests', () => {
         const registerUserPage = poManager.getRegisterUserPage();
         await page.goto(`${ENV.baseURL}/register`);
         await expect(registerUserPage.textLabel).toBeVisible();
-        await registerUserPage.addNewUser('' , USERS.user.password);
+        await registerUserPage.addNewUser('' , ENV.user.password);
         await expect(registerUserPage.errorsMSG.first()).toBeVisible();
         
       });

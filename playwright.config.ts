@@ -15,25 +15,31 @@ export default defineConfig({
   use: {
     trace: 'on',
     screenshot: 'only-on-failure',
-    browserName: 'chromium',
+    video: 'retain-on-failure',
     headless: true,
   },
-  // projects: [
-  //   {
-  //     name: 'chromium',
-  //     use: { ...devices['Desktop Chrome'] },
-  //   },
+  projects: [
+    {
+      name: 'chromium',
+      use: {
+        browserName: 'chromium',
+      },
+    },
 
-  //   {
-  //     name: 'firefox',
-  //     use: { ...devices['Desktop Firefox'] },
-  //   },
+    {
+      name: 'firefox',
+      use: {
+        browserName: 'firefox',
+      },
+    },
 
-  //   {
-  //     name: 'webkit',
-  //     use: { ...devices['Desktop Safari'] },
-  //   },
+    {
+      name: 'webkit',
+      use: {
+        browserName: 'webkit',
+      },
+    },
 
-  // ],
+  ],
 
 });

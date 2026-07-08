@@ -1,21 +1,19 @@
 import { test, expect, request } from '@playwright/test';
 import { PageObjectManager } from '../page-objects/page_object_manager';
 import { ENV } from "../configs/env";
-import { USERS } from '../configs/users';
-import { EVENTS } from '../configs/event';
-import {ApiUtils} from '../utils/api_utils';
+import { ApiUtils } from '../utils/api_utils';
 
 let token: any;
 
 test.beforeAll(async () => {
   const apiContext = await request.newContext();
   const apiUtils = new ApiUtils(apiContext);
-  token = await apiUtils.loginProcess(USERS.user.email, USERS.user.password);
+  token = await apiUtils.loginProcess(ENV.user.email, ENV.user.password);
 })
 
 test.describe('EVENT DETAILS TESTS', () => {
 
-  test('View All Events Page', async ({ page }) => {
+  test('@sanityView All Events Page', async ({ page }) => {
 
     await page.addInitScript(value => {
       window.localStorage.setItem('eventhub_token', value);
@@ -46,9 +44,9 @@ test.describe('EVENT DETAILS TESTS', () => {
 
     await loginPage.goTo(`${ENV.baseURL}/events`);
     await expect(homeEventPage.searchBar).toBeVisible();
-    await homeEventPage.searchBar.fill(EVENTS.eventTitle);
+    await homeEventPage.searchBar.fill(ENV.eventTitle);
     const eventCards = homeEventPage.eventsCards;
-    await expect(eventCards.first()).toContainText(EVENTS.eventTitle);
+    await expect(eventCards.first()).toContainText(ENV.eventTitle);
   });
 
   test('Search With Empty Query', async ({ page }) => {
@@ -137,7 +135,7 @@ test.describe('EVENT DETAILS TESTS', () => {
     const categoryFilter = homeEventPage.filterSection.nth(0);
     const locationFilter = homeEventPage.filterSection.nth(1);
     await categoryFilter.selectOption('🎉 Festival');
-        await expect(homeEventPage.eventsCards.first()).toBeVisible();
+    await expect(homeEventPage.eventsCards.first()).toBeVisible();
     await locationFilter.selectOption('Delhi');
     await expect(page).toHaveURL(/city=Delhi/);
   });
@@ -185,7 +183,7 @@ test.describe('EVENT DETAILS TESTS', () => {
 
   });
 
-  test('View Event Details And E2E Book a Ticket', async ({ page }) => {
+  test('@smoke View Event Details And Book a Ticket', async ({ page }) => {
     await page.addInitScript(value => {
       window.localStorage.setItem('eventhub_token', value);
     },
@@ -197,9 +195,9 @@ test.describe('EVENT DETAILS TESTS', () => {
     const eventTicketsPage = poManager.getEventTicketsPage();
 
     await loginPage.goTo(`${ENV.baseURL}/events`);
-    await eventDetailsPage.goToEventDetails(EVENTS.eventTitle);
-    await expect(eventDetailsPage.eventTitleDetails).toHaveText(EVENTS.eventTitle);
-    await eventDetailsPage.bookTicket(EVENTS.eventPlacedName, USERS.user.email, EVENTS.eventPlacedPhone);
+    await eventDetailsPage.goToEventDetails(ENV.eventTitle);
+    await expect(eventDetailsPage.eventTitleDetails).toHaveText(ENV.eventTitle);
+    await eventDetailsPage.bookTicket(ENV.eventPlacedName, ENV.user.email, ENV.eventPlacedPhone);
     await expect(eventDetailsPage.confirmationLabel).toBeVisible();
     expect(await eventDetailsPage.hasBookingReference()).toBeTruthy();
     const ref = await eventDetailsPage.getBookingReference();
@@ -220,8 +218,8 @@ test.describe('EVENT DETAILS TESTS', () => {
     const eventTicketsPage = poManager.getEventTicketsPage();
 
     await loginPage.goTo(`${ENV.baseURL}/events`);
-    await eventDetailsPage.goToEventDetails(EVENTS.eventTitle);
-    await expect(eventDetailsPage.eventTitleDetails).toHaveText(EVENTS.eventTitle);
+    await eventDetailsPage.goToEventDetails(ENV.eventTitle);
+    await expect(eventDetailsPage.eventTitleDetails).toHaveText(ENV.eventTitle);
     await eventDetailsPage.bookTicket("", "", "");
     await expect(eventTicketsPage.errorMsgs.first()).toBeVisible();
   });

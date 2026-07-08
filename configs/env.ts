@@ -16,4 +16,22 @@ export const ENV = {
     workers: Number(process.env.WORKERS),
     video : process.env.VIDEO as any,
     trace : process.env.TRACE as any,
+    eventTitle: process.env.EVENT_TITLE as string,
+    eventPlacedName: process.env.EVENT_PLACED_NAME as string,
+    eventPlacedPhone: process.env.EVENT_PLACED_PHONE as string,
+    admin: {
+        email: process.env.ADMIN_EMAIL as string,
+        password: process.env.ADMIN_PASSWORD as string
+    },
+
+    user: {
+        email: process.env.USER_EMAIL as string,
+        password: process.env.USER_PASSWORD as string
+    },
+
+    fakeUser: {
+        email: process.env.FAKE_USER_EMAIL as string,
+        password: process.env.FAKE_USER_PASSWORD as string
+    }
+    
 };

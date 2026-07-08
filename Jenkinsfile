@@ -4,12 +4,38 @@ pipeline {
     tools {
         nodejs 'NodeJS' 
     }
+
+    parameters {
+        choice(
+            name: 'ENV',
+            choices: ['development', 'staging', 'production'],
+            description: 'Select target environment'
+        )
+
+        choice(
+            name: 'BROWSER',
+            choices: ['all','chromium', 'firefox', 'webkit'],
+            description: 'Select browser'
+        )
+
+        choice(
+            name: 'SUITE',
+            choices: ['all','smoke', 'regression', 'sanity'],
+            description: 'Select test suite'
+        )
+    }
+
+    steps {
+        echo "Environment: ${params.ENV}"
+        echo "Browser: ${params.BROWSER}"
+        echo "Suite: ${params.SUITE}"
+    }
     
     stages {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing npm packages...'
-                bat 'npm ci' // Use 'sh' if you are on Mac/Linux
+                bat 'npm ci' 
                 
                 echo 'Installing Playwright Browsers...'
                 bat 'npx playwright install --with-deps'
@@ -18,10 +44,23 @@ pipeline {
         
         stage('Execute Playwright Tests') {
             steps {
-                echo 'Running Playwright Tests...'
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    bat 'npx playwright test'
+                script {
+                    def testCommand = "npx cross-env TEST_ENV=${params.ENV} npx playwright test"
+                    if (params.BROWSER != 'all') {
+                        testCommand += " --browser=${params.BROWSER}"
+                    }
+                    if (params.SUITE != 'all') {
+                        testCommand += " --grep=@${params.SUITE}"
+                    }
+                    bat testCommand
                 }
+            }
+        }
+        stage('Display configuration') {
+            steps {
+                echo "Selected Environment: ${params.ENV}"
+                echo "Selected Browser: ${params.BROWSER}"
+                echo "Selected Test Suite: ${params.SUITE}"
             }
         }
     }
