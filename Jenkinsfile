@@ -31,7 +31,7 @@ pipeline {
                 bat 'npm ci' 
                 
                 echo 'Installing Playwright Browsers...'
-                bat 'npx playwright install --with-deps'
+                bat 'npx playwright install'
             }
         }
         
@@ -40,7 +40,7 @@ pipeline {
                 script {
                     def testCommand = "npx cross-env TEST_ENV=${params.ENV} npx playwright test"
                     if (params.BROWSER != 'all') {
-                        testCommand += " --browser=${params.BROWSER}"
+                        testCommand += " --project=${params.BROWSER}"
                     }
                     if (params.SUITE != 'all') {
                         testCommand += " --grep=@${params.SUITE}"
