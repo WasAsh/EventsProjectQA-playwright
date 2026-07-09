@@ -13,7 +13,7 @@ test.beforeAll(async () => {
 
 test.describe('EVENT DETAILS TESTS', () => {
 
-  test('@sanityView All Events Page', async ({ page }) => {
+  test('@sanity View All Events Page', async ({ page }) => {
 
     await page.addInitScript(value => {
       window.localStorage.setItem('eventhub_token', value);

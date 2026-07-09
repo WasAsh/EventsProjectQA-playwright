@@ -72,6 +72,5 @@ test.describe('MANAGE EVENTS TESTS', () => {
         await expect(manageEvents.successMSG).toBeVisible();
         await manageEvents.deleteSpeceficEvent(newTicketTitle);
         await expect(manageEvents.deleteEventSuccessMSG).toBeVisible();
-        await page.pause();   
     });
 });

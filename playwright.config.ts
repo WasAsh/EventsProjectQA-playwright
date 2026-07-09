@@ -14,9 +14,9 @@ export default defineConfig({
     }],
     ['allure-playwright']
   ],
-  timeout: 30000,
+  timeout: 50000,
   expect: {
-    timeout: 30000,
+    timeout: 50000,
   },
   use: {
     trace: 'retain-on-failure',

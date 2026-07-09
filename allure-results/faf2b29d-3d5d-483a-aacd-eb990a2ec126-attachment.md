@@ -1,0 +1,279 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: home_book_event_details.spec.ts >> EVENT DETAILS TESTS >> Search Events By Keyword
+- Location: tests\home_book_event_details.spec.ts:34:7
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: expect(locator).toContainText(expected) failed
+
+Locator: locator('main article').first()
+Expected substring: "testest"
+Error: element(s) not found
+
+Call log:
+  - Expect "toContainText" with timeout 30000ms
+  - waiting for locator('main article').first()
+    2 × locator resolved to <article id="event-card" data-testid="event-card" class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col">…</article>
+      - unexpected value "FestivalFeaturedDilli Diwali MelaTue, 20 OctPragati Maidan Exhibition Grounds, Delhi$3008 seats left!Book Now"
+
+```
+
+```yaml
+- navigation:
+  - link "EventHub":
+    - /url: /
+    - img
+    - text: EventHub
+  - link "Home":
+    - /url: /
+  - link "Events":
+    - /url: /events
+  - link "My Bookings":
+    - /url: /bookings
+  - link "API Docs":
+    - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+  - button "Admin":
+    - text: Admin
+    - img
+  - text: wasee.2132254@gmail.com
+  - button "Logout"
+- main:
+  - heading "Upcoming Events" [level=1]
+  - paragraph: Find your next unforgettable experience
+  - textbox "Search events, venues…": testest
+  - combobox:
+    - option "All Categories" [selected]
+    - option "🎙 Conference"
+    - option "🎵 Concert"
+    - option "⚽ Sports"
+    - option "🛠 Workshop"
+    - option "🎉 Festival"
+  - combobox:
+    - option "All Cities" [selected]
+    - option "Mumbai"
+    - option "Bangalore"
+    - option "Delhi"
+    - option "Hyderabad"
+    - option "Chennai"
+    - option "Pune"
+  - button "Clear filters"
+  - img
+  - heading "No events found" [level=3]
+  - paragraph: Try adjusting your filters or search terms to find what you're looking for.
+  - link "Add New Event":
+    - /url: /admin/events
+    - button "Add New Event":
+      - img
+      - text: Add New Event
+- contentinfo:
+  - heading "Rahul Shetty Academy" [level=3]
+  - paragraph: India's leading QA automation training academy — empowering engineers to build real-world testing skills.
+  - heading "Popular Courses" [level=3]
+  - list:
+    - listitem:
+      - link "Selenium WebDriver with Java":
+        - /url: https://rahulshettyacademy.com
+    - listitem:
+      - link "Playwright with JavaScript":
+        - /url: https://rahulshettyacademy.com
+    - listitem:
+      - link "RestAssured API Testing":
+        - /url: https://rahulshettyacademy.com
+    - listitem:
+      - link "Cypress End-to-End Testing":
+        - /url: https://rahulshettyacademy.com
+    - listitem:
+      - link "Appium Mobile Testing":
+        - /url: https://rahulshettyacademy.com
+  - heading "QA Job Hiring Platform" [level=3]
+  - paragraph: Get hired faster — take skill assessments trusted by top QA employers worldwide.
+  - link "techsmarthire.com →":
+    - /url: https://techsmarthire.com
+  - heading "EventHub Practice App" [level=3]
+  - list:
+    - listitem:
+      - link "Browse Events":
+        - /url: /events
+    - listitem:
+      - link "My Bookings":
+        - /url: /bookings
+    - listitem:
+      - link "Manage Events":
+        - /url: /admin/events
+    - listitem:
+      - link "API Documentation":
+        - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+  - paragraph: © 2026 Rahul Shetty Academy. All rights reserved.
+  - link "rahulshettyacademy.com →":
+    - /url: https://rahulshettyacademy.com
+  - link "techsmarthire.com →":
+    - /url: https://techsmarthire.com
+- alert
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect, request } from '@playwright/test';
+  2   | import { PageObjectManager } from '../page-objects/page_object_manager';
+  3   | import { ENV } from "../configs/env";
+  4   | import { ApiUtils } from '../utils/api_utils';
+  5   | 
+  6   | let token: any;
+  7   | 
+  8   | test.beforeAll(async () => {
+  9   |   const apiContext = await request.newContext();
+  10  |   const apiUtils = new ApiUtils(apiContext);
+  11  |   token = await apiUtils.loginProcess(ENV.user.email, ENV.user.password);
+  12  | })
+  13  | 
+  14  | test.describe('EVENT DETAILS TESTS', () => {
+  15  | 
+  16  |   test('@sanity View All Events Page', async ({ page }) => {
+  17  | 
+  18  |     await page.addInitScript(value => {
+  19  |       window.localStorage.setItem('eventhub_token', value);
+  20  |     },
+  21  |       token
+  22  |     );
+  23  |     const poManager = new PageObjectManager(page);
+  24  |     const loginPage = poManager.getLoginPage();
+  25  |     const homeEventPage = poManager.getHomeEventPage();
+  26  | 
+  27  |     await loginPage.goTo(`${ENV.baseURL}/events`);
+  28  |     await expect(homeEventPage.homeText).toHaveText('Upcoming Events');
+  29  |     const eventCards = homeEventPage.eventsCards;
+  30  |     await expect(eventCards.first()).toBeVisible();
+  31  |     await expect(eventCards.first()).toContainText('Book Now');
+  32  |   });
+  33  | 
+  34  |   test('Search Events By Keyword', async ({ page }) => {
+  35  | 
+  36  |     await page.addInitScript(value => {
+  37  |       window.localStorage.setItem('eventhub_token', value);
+  38  |     },
+  39  |       token
+  40  |     );
+  41  |     const poManager = new PageObjectManager(page);
+  42  |     const loginPage = poManager.getLoginPage();
+  43  |     const homeEventPage = poManager.getHomeEventPage();
+  44  | 
+  45  |     await loginPage.goTo(`${ENV.baseURL}/events`);
+  46  |     await expect(homeEventPage.searchBar).toBeVisible();
+  47  |     await homeEventPage.searchBar.fill(ENV.eventTitle);
+  48  |     const eventCards = homeEventPage.eventsCards;
+> 49  |     await expect(eventCards.first()).toContainText(ENV.eventTitle);
+      |                                      ^ Error: expect(locator).toContainText(expected) failed
+  50  |   });
+  51  | 
+  52  |   test('Search With Empty Query', async ({ page }) => {
+  53  | 
+  54  |     await page.addInitScript(value => {
+  55  |       window.localStorage.setItem('eventhub_token', value);
+  56  |     },
+  57  |       token
+  58  |     );
+  59  |     const poManager = new PageObjectManager(page);
+  60  |     const loginPage = poManager.getLoginPage();
+  61  |     const homeEventPage = poManager.getHomeEventPage();
+  62  | 
+  63  |     await loginPage.goTo(`${ENV.baseURL}/events`);
+  64  |     await expect(homeEventPage.searchBar).toBeVisible();
+  65  |     await homeEventPage.searchBar.fill('');
+  66  |     await page.waitForLoadState('networkidle');
+  67  |     await expect(page).toHaveURL(`${ENV.baseURL}/events`);
+  68  |   });
+  69  | 
+  70  |   test('Search With Special Characters', async ({ page }) => {
+  71  | 
+  72  |     await page.addInitScript(value => {
+  73  |       window.localStorage.setItem('eventhub_token', value);
+  74  |     },
+  75  |       token
+  76  |     );
+  77  |     const poManager = new PageObjectManager(page);
+  78  |     const loginPage = poManager.getLoginPage();
+  79  |     const homeEventPage = poManager.getHomeEventPage();
+  80  | 
+  81  |     await loginPage.goTo(`${ENV.baseURL}/events`);
+  82  |     await expect(homeEventPage.searchBar).toBeVisible();
+  83  |     await homeEventPage.searchBar.fill('@#$%^&*()');
+  84  |     await expect(homeEventPage.emptyPageContent).toBeVisible();
+  85  |     await expect(homeEventPage.emptyPageContent).toHaveText('No events found');
+  86  |   });
+  87  | 
+  88  |   test('Filter Events By Location', async ({ page }) => {
+  89  |     await page.addInitScript(value => {
+  90  |       window.localStorage.setItem('eventhub_token', value);
+  91  |     },
+  92  |       token
+  93  |     );
+  94  |     const poManager = new PageObjectManager(page);
+  95  |     const loginPage = poManager.getLoginPage();
+  96  |     const homeEventPage = poManager.getHomeEventPage();
+  97  | 
+  98  |     await loginPage.goTo(`${ENV.baseURL}/events`);
+  99  |     const locationFilter = homeEventPage.filterSection.nth(1);
+  100 |     await locationFilter.selectOption('Mumbai');
+  101 |     await expect(homeEventPage.emptyPageContent).toHaveText('No events found');
+  102 |     await locationFilter.selectOption('All Cities');
+  103 |     await expect(page).toHaveURL(`${ENV.baseURL}/events`);
+  104 |   });
+  105 | 
+  106 |   test('Filter Events By Category', async ({ page }) => {
+  107 | 
+  108 |     await page.addInitScript(value => {
+  109 |       window.localStorage.setItem('eventhub_token', value);
+  110 |     },
+  111 |       token
+  112 |     );
+  113 |     const poManager = new PageObjectManager(page);
+  114 |     const loginPage = poManager.getLoginPage();
+  115 |     const homeEventPage = poManager.getHomeEventPage();
+  116 | 
+  117 |     await loginPage.goTo(`${ENV.baseURL}/events`);
+  118 |     const categoryFilter = homeEventPage.filterSection.nth(0);
+  119 |     await categoryFilter.selectOption('🎵 Concert');
+  120 |     await expect(homeEventPage.eventCardCategoryBadge).toHaveText('Concert');
+  121 |   });
+  122 | 
+  123 |   test('Multiple Filters Combined', async ({ page }) => {
+  124 | 
+  125 |     await page.addInitScript(value => {
+  126 |       window.localStorage.setItem('eventhub_token', value);
+  127 |     },
+  128 |       token
+  129 |     );
+  130 |     const poManager = new PageObjectManager(page);
+  131 |     const loginPage = poManager.getLoginPage();
+  132 |     const homeEventPage = poManager.getHomeEventPage();
+  133 | 
+  134 |     await loginPage.goTo(`${ENV.baseURL}/events`);
+  135 |     const categoryFilter = homeEventPage.filterSection.nth(0);
+  136 |     const locationFilter = homeEventPage.filterSection.nth(1);
+  137 |     await categoryFilter.selectOption('🎉 Festival');
+  138 |     await expect(homeEventPage.eventsCards.first()).toBeVisible();
+  139 |     await locationFilter.selectOption('Delhi');
+  140 |     await expect(page).toHaveURL(/city=Delhi/);
+  141 |   });
+  142 | 
+  143 |   test('Clear All Filters', async ({ page }) => {
+  144 | 
+  145 |     await page.addInitScript(value => {
+  146 |       window.localStorage.setItem('eventhub_token', value);
+  147 |     },
+  148 |       token
+  149 |     );
+```

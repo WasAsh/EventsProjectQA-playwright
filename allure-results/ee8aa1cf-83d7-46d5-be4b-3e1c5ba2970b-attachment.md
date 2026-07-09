@@ -1,0 +1,171 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: api_manage_events.spec.ts >> MANAGE EVENTS TESTS >> Add New Event By API And View It + Book a ticket E2E
+- Location: tests\api_manage_events.spec.ts:28:9
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "EventHub" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e9]: EventHub
+      - generic [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: /
+        - link "Events" [ref=e12] [cursor=pointer]:
+          - /url: /events
+        - link "My Bookings" [ref=e13] [cursor=pointer]:
+          - /url: /bookings
+        - link "API Docs" [ref=e14] [cursor=pointer]:
+          - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+        - button "Admin" [ref=e16] [cursor=pointer]:
+          - text: Admin
+          - img [ref=e17]
+        - generic [ref=e19]:
+          - generic "wasee.2132254@gmail.com" [ref=e20]
+          - button "Logout" [ref=e21] [cursor=pointer]
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - navigation [ref=e24]:
+        - link "Events" [ref=e25] [cursor=pointer]:
+          - /url: /events
+        - generic [ref=e26]: /
+        - generic [ref=e27]: amor cribro clementia volutabrum
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - img [ref=e32]
+          - generic [ref=e34]:
+            - generic [ref=e36]: Sports
+            - heading "amor cribro clementia volutabrum" [level=1] [ref=e37]
+            - generic [ref=e38]:
+              - generic [ref=e39]:
+                - generic [ref=e40]: 📅
+                - generic [ref=e41]:
+                  - paragraph [ref=e42]: Date
+                  - paragraph [ref=e43]: Saturday, 25 July
+              - generic [ref=e44]:
+                - generic [ref=e45]: 🕐
+                - generic [ref=e46]:
+                  - paragraph [ref=e47]: Time
+                  - paragraph [ref=e48]: 06:15 am
+              - generic [ref=e49]:
+                - generic [ref=e50]: 📍
+                - generic [ref=e51]:
+                  - paragraph [ref=e52]: Venue
+                  - paragraph [ref=e53]: Ortiz Walks
+              - generic [ref=e54]:
+                - generic [ref=e55]: 🌆
+                - generic [ref=e56]:
+                  - paragraph [ref=e57]: City
+                  - paragraph [ref=e58]: Lake Janae
+              - generic [ref=e59]:
+                - generic [ref=e60]: 🎫
+                - generic [ref=e61]:
+                  - paragraph [ref=e62]: Available
+                  - paragraph [ref=e63]: 169 / 169 seats
+              - generic [ref=e64]:
+                - generic [ref=e65]: 💰
+                - generic [ref=e66]:
+                  - paragraph [ref=e67]: Price per ticket
+                  - paragraph [ref=e68]: $487
+            - generic [ref=e69]:
+              - heading "About this event" [level=2] [ref=e70]
+              - paragraph [ref=e71]: Curia cattus synagoga eum sollers expedita causa. Conspergo tondeo tergum decimus. Cunctatio temptatio acervus aeternus tego catena convoco sophismata alter vinco.
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - heading "Book Tickets" [level=2] [ref=e75]
+            - generic [ref=e76]: $487
+          - paragraph [ref=e77]: per ticket
+          - generic [ref=e78]:
+            - img [ref=e80]
+            - heading "Booking Confirmed! 🎉" [level=3] [ref=e82]
+            - paragraph [ref=e83]: Your tickets are reserved.
+            - generic [ref=e84]:
+              - generic [ref=e85]:
+                - generic [ref=e86]: Booking Ref
+                - generic [ref=e87]: A-CKTSXQ
+              - generic [ref=e88]:
+                - generic [ref=e89]: Customer
+                - generic [ref=e90]: waseem ashraf
+              - generic [ref=e91]:
+                - generic [ref=e92]: Tickets
+                - generic [ref=e93]: "1"
+              - generic [ref=e94]:
+                - generic [ref=e95]: Total
+                - generic [ref=e96]: $487
+            - generic [ref=e97]:
+              - link "View My Bookings" [ref=e98] [cursor=pointer]:
+                - /url: /bookings
+                - button "View My Bookings" [ref=e99]
+              - link "Browse More Events" [ref=e100] [cursor=pointer]:
+                - /url: /events
+                - button "Browse More Events" [ref=e101]
+  - contentinfo [ref=e102]:
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - heading "Rahul Shetty Academy" [level=3] [ref=e106]
+          - paragraph [ref=e107]: India's leading QA automation training academy — empowering engineers to build real-world testing skills.
+        - generic [ref=e108]:
+          - heading "Popular Courses" [level=3] [ref=e109]
+          - list [ref=e110]:
+            - listitem [ref=e111]:
+              - link "Selenium WebDriver with Java" [ref=e112] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e113]:
+              - link "Playwright with JavaScript" [ref=e114] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e115]:
+              - link "RestAssured API Testing" [ref=e116] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e117]:
+              - link "Cypress End-to-End Testing" [ref=e118] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e119]:
+              - link "Appium Mobile Testing" [ref=e120] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+        - generic [ref=e121]:
+          - heading "QA Job Hiring Platform" [level=3] [ref=e122]
+          - paragraph [ref=e123]: Get hired faster — take skill assessments trusted by top QA employers worldwide.
+          - link "techsmarthire.com →" [ref=e124] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+        - generic [ref=e125]:
+          - heading "EventHub Practice App" [level=3] [ref=e126]
+          - list [ref=e127]:
+            - listitem [ref=e128]:
+              - link "Browse Events" [ref=e129] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e130]:
+              - link "My Bookings" [ref=e131] [cursor=pointer]:
+                - /url: /bookings
+            - listitem [ref=e132]:
+              - link "Manage Events" [ref=e133] [cursor=pointer]:
+                - /url: /admin/events
+            - listitem [ref=e134]:
+              - link "API Documentation" [ref=e135] [cursor=pointer]:
+                - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+      - generic [ref=e136]:
+        - paragraph [ref=e137]: © 2026 Rahul Shetty Academy. All rights reserved.
+        - generic [ref=e138]:
+          - link "rahulshettyacademy.com →" [ref=e139] [cursor=pointer]:
+            - /url: https://rahulshettyacademy.com
+          - link "techsmarthire.com →" [ref=e140] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+  - alert [ref=e141]
+```
